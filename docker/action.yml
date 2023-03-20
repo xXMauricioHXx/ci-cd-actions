@@ -42,7 +42,7 @@ runs:
       with:
         context: .
         push: true
-        tags: ${{inputs.registry_username}}/${{inputs.image_name}}:${{}}
+        tags: ${{inputs.registry_username}}/${{inputs.image_name}}:${{inputs.tag}}
         labels: ${{ steps.meta.outputs.labels }}
         cache-from: type=gha
         cache-to: type=gha,mode=max
