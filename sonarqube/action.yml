@@ -10,6 +10,7 @@ runs:
   using: "composite"
   steps:
     - name: See Sonar key
+      shell: bash
       env:
         SONAR_KEY: ${{ inputs.sonarqube_key }}
       run: echo "$SONAR_KEY"
