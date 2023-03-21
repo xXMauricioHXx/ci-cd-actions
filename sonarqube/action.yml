@@ -5,16 +5,13 @@ inputs:
   sonarqube_key:
     description: "Key for SonarQube"
     required: true
+  sonarqube_url:
+    description: "URL for sonar server"
+    required: true
 
 runs:
   using: "composite"
   steps:
-    - name: See Sonar key
-      shell: bash
-      env:
-        SONAR_KEY: ${{ inputs.sonarqube_key }}
-      run: echo "$SONAR_KEY"
-
     - name: Setup Java 11
       uses: actions/setup-java@v3
       with:
@@ -37,7 +34,7 @@ runs:
     - name: SonarQube
       shell: bash
       run: sonar-scanner
-        -Dsonar.host.url=https://sonarqube.skore.dev
+        -Dsonar.host.url=${{ inputs.sonarqube_url }}
         -Dsonar.javascript.lcov.reportPaths=coverage/lcov.info
         -Dsonar.login=${{ inputs.sonarqube_key }}
         -Dsonar.projectKey=${{ github.event.repository.name }}
