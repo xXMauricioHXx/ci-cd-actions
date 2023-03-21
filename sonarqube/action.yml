@@ -6,14 +6,9 @@ inputs:
     description: "Key for SonarQube"
     required: true
 
-needs: [pr_analysis, unit_tests, integration_e2e_tests]
-
 runs:
   using: "composite"
   steps:
-    - name: Checkout repo
-      uses: actions/checkout@v3
-
     - name: Setup Java 11
       uses: actions/setup-java@v3
       with:
