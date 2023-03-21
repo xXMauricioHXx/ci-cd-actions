@@ -9,6 +9,11 @@ inputs:
 runs:
   using: "composite"
   steps:
+    - name: See Sonar key
+      env:
+        SONAR_KEY: ${{ inputs.sonarqube_key }}
+      run: echo "$SONAR_KEY"
+
     - name: Setup Java 11
       uses: actions/setup-java@v3
       with:
