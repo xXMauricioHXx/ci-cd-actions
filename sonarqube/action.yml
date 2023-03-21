@@ -29,6 +29,7 @@ runs:
         key: ${{ runner.os }}-build-${{ github.sha }}
 
     - name: SonarQube
+      shell: bash
       run: sonar-scanner
         -Dsonar.host.url=https://sonarqube.skore.dev
         -Dsonar.javascript.lcov.reportPaths=coverage/lcov.info
